@@ -15,4 +15,6 @@ USER ngc7293
 
 WORKDIR /home/ngc7293
 
+RUN chmod +x .
+
 ADD server.py ./server.py
