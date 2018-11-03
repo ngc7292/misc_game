@@ -9,12 +9,15 @@ RUN pip3 install requests
 RUN pip3 install numpy
 RUN pip3 install -U wxpy -i "https://pypi.doubanio.com/simple/"
 
-RUN useradd ngc7293
+
+RUN mkdir /home/ngc7293
+
+RUN useradd ngc7293 -d /home/ngc7293
+
+RUN chmod 777 /home/ngc7293
 
 USER ngc7293
 
 WORKDIR /home/ngc7293
-
-RUN chmod +x ./
 
 ADD server.py ./server.py
