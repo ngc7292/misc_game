@@ -56,14 +56,16 @@ success_log = Logger(filename="success.log")
 
 START_TXT = """
  _______  _______  _______  _______    _______  _______  _______  _______
-(  ____ \(  ____ )(  ____ \(  ___  )  (  ____ \(  ___  )(       )(  ____ \
+(  ____ \(  ____ )(  ____ \(  ___  )  (  ____ \(  ___  )(       )(  ____ \\
 | (    \/| (    )|| (    \/| (   ) |  | (    \/| (   ) || () () || (    \/
 | (__    | (____)|| (__    | |   | |  | |      | (___) || || || || (__
 |  __)   |     __)|  __)   | |   | |  | | ____ |  ___  || |(_)| ||  __)
 | (      | (\ (   | (      | | /\| |  | | \_  )| (   ) || |   | || (
-| )      | ) \ \__| (____/\| (_\ \ |  | (___) || )   ( || )   ( || (____/\
+| )      | ) \ \__| (____/\| (_\ \ |  | (___) || )   ( || )   ( || (____/\\
 |/       |/   \__/(_______/(____\/_)  (_______)|/     \||/     \|(_______/
 
+
+this is a sample game ...
 
 """
 
@@ -81,7 +83,7 @@ def get_number(x, freq,rge):
     
 def divide_flag(token):
     flag_list = []
-    flag = "********************************"
+    flag = "****************************************************************"
     for i in range(0,64,2):
         flag_list.append(int(flag[i]+flag[i+1],16))
     return flag,flag_list
@@ -158,7 +160,7 @@ def problem(tcpClisock,cli_addr):
     
     tcpClisock.sendall(START_TXT.encode("utf-8"))
     while True:
-        tcpClisock.sendall("input y to start this game, and input hint to get hint:".encode("utf-8"))
+        tcpClisock.sendall("\ninput y to start this game, and input hint to get hint:".encode("utf-8"))
         data = tcpClisock.recv(1024)
         data = data.decode("utf-8").replace("\n","")
         userlogger.logger.info("user input: "+str(data))
@@ -170,7 +172,7 @@ def problem(tcpClisock,cli_addr):
             if check_token(token) == True:
                 userlogger.logger.info("token "+str(token)+" access in")
                 start_game(tcpClisock,token,userlogger)
-                return
+                break
             else:
                 tcpClisock.sendall("your token is error".encode("utf-8"))
                 tcpClisock.shutdown(2)

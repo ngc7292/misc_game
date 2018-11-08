@@ -27,7 +27,7 @@ import socket
 from multiprocessing import Process
 import math
 
-token = "Okxa47uIRWgnQCdtAUIQMBbowEZFOSIb"
+token = "TN3OWQKHPNmPshbridfU21Sz2LncsJaR"
 
 def solution():
     x = np.linspace(0,1,1500)
