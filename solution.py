@@ -62,7 +62,7 @@ def solution():
     
     
     tcpCliSock = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-    tcpCliSock.connect(("127.0.0.1",6775))
+    tcpCliSock.connect(("150.109.119.46",6775))
     
     
     tcpCliSock.recv(1024)
